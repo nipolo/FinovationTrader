@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  finovationtrader.api:
+    image: ${DOCKER_REGISTRY-}finovationtraderapi
+    build:
+      context: .
+      dockerfile: ../FinovationTrader/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5001:80"
+  traderDB:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - SA_PASSWORD=1qaz!QAZ
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
