@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,15 +18,11 @@ namespace FinovationTrader.Application.Queries.Trader
 {
     public class GetTraderAvatarImage : IRequestHandler<GetAvatarImageRequestDto, GetAvatarImageResponseDto>
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IFileStorageService _fileStorageService;
         private readonly IRepository<TraderPerson> _repository;
 
         public GetTraderAvatarImage(IUnitOfWork unitOfWork, IFileStorageService fileStorageService)
         {
             _repository = unitOfWork.GetRepository<TraderPerson>();
-            _unitOfWork = unitOfWork;
-            _fileStorageService = fileStorageService;
         }
 
         public async Task<GetAvatarImageResponseDto> Handle(GetAvatarImageRequestDto request, CancellationToken cancellationToken)
@@ -38,7 +31,7 @@ namespace FinovationTrader.Application.Queries.Trader
 
             if (trader == null)
             {
-                throw new AggregateNotFoundException("Cannot find trader with this id");
+                throw new AggregateNotFoundException("Cannot find trader with this id.");
             }
 
             var fileName = trader.AvatarImagePath.Split('/').Last();

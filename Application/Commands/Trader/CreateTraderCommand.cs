@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,7 +31,7 @@ namespace FinovationTrader.Application.Commands.Trader
         {
             if (_repository.QueryEntities().Any(t => t.Email == request.Email))
             {
-                throw new EntityAlreadyExistsException("User with this email already exists");
+                throw new EntityAlreadyExistsException("User with this email already exists.");
             }
 
             var avatarFilePath = await _fileStorageService.UploadFileAsync(request.AvatarImage);

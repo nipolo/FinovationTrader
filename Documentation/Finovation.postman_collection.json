@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "e88d3653-ef47-44f5-a299-93b3d8755e24",
+		"name": "Finovation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create trader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "FirstName",
+							"value": "Borislav",
+							"type": "text"
+						},
+						{
+							"key": "LastName",
+							"value": "Valkov",
+							"type": "text"
+						},
+						{
+							"key": "BirthDate",
+							"value": "1990-07-10T11:10:00",
+							"type": "text"
+						},
+						{
+							"key": "Cryptocurrencies[0][currency]",
+							"value": "Ripple",
+							"type": "text"
+						},
+						{
+							"key": "Cryptocurrencies[0][symbol]",
+							"value": "XRP",
+							"type": "text"
+						},
+						{
+							"key": "AvatarImage",
+							"type": "file",
+							"src": "/C:/Users/bvalkov/Desktop/IMG_20200713_135605.jpg"
+						},
+						{
+							"key": "Email",
+							"value": "bvalkov1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "1qaz!QAZ",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5001/api/traders",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"traders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download trader avatar image",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5001/api/traders/2c4210f7-c584-4332-a745-f6473a8a3804/avatarImage",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"traders",
+						"2c4210f7-c584-4332-a745-f6473a8a3804",
+						"avatarImage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get traders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"OnlyActive\": true,\r\n    \"OrderBy\": 1,\r\n    \"PageSize\": 2,\r\n    \"StartingPage\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5001/api/traders",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"traders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soft delete trader",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5001/api/traders/57F69070-E142-4D67-B7F6-3C082FBDA2DA",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"traders",
+						"57F69070-E142-4D67-B7F6-3C082FBDA2DA"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
