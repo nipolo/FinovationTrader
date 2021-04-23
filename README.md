@@ -3,7 +3,7 @@
 
 1. Clone the repo
 2. Install docker for Windows (verify that docker-compose is working)
-3. Open Visual Studio 2019 
+3. Open the solution FinovationTrader.sln with Visual Studio 2019 
 4. Change startup project to be docker-compose in Deployment 
 5. Build and run the solution 
 6. Verify that the database is up - create connection using DBeaver or SQL Management Studio:
