@@ -30,7 +30,7 @@ namespace FinovationTrader.Data.Adapter
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Trader>()
-            .HasKey(t => t.Id);
+                .HasKey(t => t.Id);
 
             modelBuilder.Entity<Trader>()
                 .HasMany(t => t.Cryptocurrencies)
@@ -38,7 +38,7 @@ namespace FinovationTrader.Data.Adapter
                 .HasForeignKey(t => t.TraderId);
 
             modelBuilder.Entity<Cryptocurrency>()
-                .HasKey(t => t.Symbol);
+                .HasKey(t => new { t.Symbol, t.TraderId });
         }
     }
 }

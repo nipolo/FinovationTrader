@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinovationTrader.Data.Migrations
 {
     [DbContext(typeof(FinovationTraderContext))]
-    [Migration("20210422230743_FinovationTrader_Initial")]
+    [Migration("20210422235010_FinovationTrader_Initial")]
     partial class FinovationTrader_Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,13 +26,13 @@ namespace FinovationTrader.Data.Migrations
                     b.Property<string>("Symbol")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Currency")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("TraderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Symbol");
+                    b.Property<string>("Currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Symbol", "TraderId");
 
                     b.HasIndex("TraderId");
 

@@ -37,20 +37,22 @@ namespace FinovationTrader.Application.Commands.Trader
             }
 
             var avatarFilePath = await _fileStorageService.UploadFileAsync(request.AvatarImage);
+            var traderId = Guid.NewGuid();
 
             var trader = new TraderPerson()
             {
-                Id = Guid.NewGuid(),
+                Id = traderId,
                 AvatarImagePath = avatarFilePath,
                 BirthDate = DateTime.Parse(request.BirthDate),
                 Cryptocurrencies = request.Cryptocurrencies
                     .Select(c => new Data.States.Cryptocurrency()
                     {
                         Currency = c.Currency,
-                        Symbol = c.Symbol
-                    }),
+                        Symbol = c.Symbol,
+                        TraderId = traderId
+                    }).ToList(),
                 Email = request.Email,
-                FirstName = request.Email,
+                FirstName = request.FirstName,
                 IsActive = true,
                 LastName = request.LastName,
                 Password = request.Password
@@ -60,7 +62,7 @@ namespace FinovationTrader.Application.Commands.Trader
 
             try
             {
-                _unitOfWork.SaveChanged();
+                await _unitOfWork.SaveChangedAsync();
             }
             catch
             {

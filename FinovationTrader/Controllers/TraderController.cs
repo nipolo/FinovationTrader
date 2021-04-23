@@ -37,5 +37,21 @@ namespace FinovationTrader.API.Controllers
 
             return File(response.AvatarImage, "image/jpeg");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTraders([FromBody] GetTradersRequestDto request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> GetTraders(Guid id)
+        {
+            var response = await _mediator.Send(new DeleteTraderRequestDto() { Id = id });
+
+            return Ok(response);
+        }
     }
 }

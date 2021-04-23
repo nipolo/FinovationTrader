@@ -24,13 +24,13 @@ namespace FinovationTrader.Data.Migrations
                     b.Property<string>("Symbol")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Currency")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<Guid>("TraderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Symbol");
+                    b.Property<string>("Currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Symbol", "TraderId");
 
                     b.HasIndex("TraderId");
 

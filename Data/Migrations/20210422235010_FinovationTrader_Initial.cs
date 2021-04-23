@@ -30,12 +30,12 @@ namespace FinovationTrader.Data.Migrations
                 columns: table => new
                 {
                     Symbol = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TraderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TraderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cryptocurrencies", x => x.Symbol);
+                    table.PrimaryKey("PK_Cryptocurrencies", x => new { x.Symbol, x.TraderId });
                     table.ForeignKey(
                         name: "FK_Cryptocurrencies_Traders_TraderId",
                         column: x => x.TraderId,

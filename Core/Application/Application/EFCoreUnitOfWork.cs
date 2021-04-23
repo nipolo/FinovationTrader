@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Finovation.Core.Application.Abstractions;
 
@@ -33,8 +29,8 @@ namespace Finovation.Core.Application
 
         public async Task SaveChangedAsync()
         {
-            await _dbContext.SaveChangesAsync()
-                .ContinueWith(_ => _dbContext.ChangeTracker.Clear());
+            await _dbContext.SaveChangesAsync();
+            _dbContext.ChangeTracker.Clear();
         }
     }
 }
