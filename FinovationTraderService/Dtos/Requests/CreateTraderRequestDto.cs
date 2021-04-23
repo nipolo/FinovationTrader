@@ -11,8 +11,6 @@ namespace FinovationTrader.Dtos.Requests
 {
     public class CreateTraderRequestDto : IRequest
     {
-        public Guid Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

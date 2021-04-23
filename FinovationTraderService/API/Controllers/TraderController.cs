@@ -2,11 +2,9 @@
 using System.Threading.Tasks;
 
 using FinovationTrader.Dtos.Requests;
-using FinovationTrader.Dtos.Responses;
 
 using MediatR;
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinovationTrader.API.Controllers
@@ -47,7 +45,7 @@ namespace FinovationTrader.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> GetTraders(Guid id)
+        public async Task<IActionResult> DeleteTrader(Guid id)
         {
             var response = await _mediator.Send(new DeleteTraderRequestDto() { Id = id });
 
