@@ -36,6 +36,7 @@ namespace FinovationTrader.Application.Commands.Trader
 
             var avatarFilePath = await _fileStorageService.UploadFileAsync(request.AvatarImage);
             var traderId = Guid.NewGuid();
+            var now = DateTime.Now;
 
             var trader = new TraderPerson()
             {
@@ -53,7 +54,9 @@ namespace FinovationTrader.Application.Commands.Trader
                 FirstName = request.FirstName,
                 IsActive = true,
                 LastName = request.LastName,
-                Password = request.Password
+                Password = request.Password,
+                CreatedOn = now,
+                UpdatedOn = now
             };
 
             await _repository.AddAsync(trader);

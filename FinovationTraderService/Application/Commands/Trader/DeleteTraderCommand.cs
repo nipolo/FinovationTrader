@@ -9,6 +9,7 @@ using TraderPerson = FinovationTrader.Data.States.Trader;
 using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace FinovationTrader.Application.Commands.Trader
 {
@@ -29,6 +30,7 @@ namespace FinovationTrader.Application.Commands.Trader
                 .QueryEntities()
                 .Where(t => t.Id == request.Id && t.IsActive == true)
                 .FirstOrDefaultAsync();
+            var now = DateTime.Now;
 
             if (trader == null)
             {
@@ -36,6 +38,8 @@ namespace FinovationTrader.Application.Commands.Trader
             }
 
             trader.IsActive = false;
+            trader.UpdatedOn = now;
+            trader.DeletedOn = now;
 
             _repository.Update(trader);
 
