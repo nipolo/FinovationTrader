@@ -18,13 +18,15 @@ namespace FinovationTrader.Application.Commands.Trader
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IFileStorageService _fileStorageService;
+        private readonly ICryptoService _cryptoService;
         private readonly IRepository<TraderPerson> _repository;
 
-        public CreateTraderCommand(IUnitOfWork unitOfWork, IFileStorageService fileStorageService)
+        public CreateTraderCommand(IUnitOfWork unitOfWork, IFileStorageService fileStorageService, ICryptoService cryptoService)
         {
             _repository = unitOfWork.GetRepository<TraderPerson>();
             _unitOfWork = unitOfWork;
             _fileStorageService = fileStorageService;
+            _cryptoService = cryptoService;
         }
 
         protected override async Task Handle(CreateTraderRequestDto request, CancellationToken cancellationToken)
@@ -54,7 +56,7 @@ namespace FinovationTrader.Application.Commands.Trader
                 FirstName = request.FirstName,
                 IsActive = true,
                 LastName = request.LastName,
-                Password = request.Password,
+                Password = _cryptoService.Pbkdf2Hashing(request.Password),
                 CreatedOn = now,
                 UpdatedOn = now
             };

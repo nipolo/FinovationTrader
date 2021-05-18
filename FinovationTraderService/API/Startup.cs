@@ -33,6 +33,8 @@ namespace FinovationTrader.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AddSettings(services);
+
             // TODO: Replace this log with ElasticSearch log
             // Check this: https://www.humankode.com/asp-net-core/logging-with-elasticsearch-kibana-asp-net-core-and-docker
             var loggerFactory = LoggerFactory.Create(builder =>
@@ -75,6 +77,12 @@ namespace FinovationTrader.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void AddSettings(IServiceCollection services)
+        {
+            services.Configure<CryptographySettings>(
+                Configuration.GetSection(CryptographySettings.Key));
         }
     }
 }

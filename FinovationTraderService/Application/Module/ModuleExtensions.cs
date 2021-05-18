@@ -17,6 +17,7 @@ namespace FinovationTrader.Application.Module
 
             services.AddScoped<IUnitOfWork, EFCoreUnitOfWork>();
             services.AddSingleton<IFileStorageService, FileStorageService>();
+            services.AddSingleton<ICryptoService, CryptoService>();
 
             return services;
         }
