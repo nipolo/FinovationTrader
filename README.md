@@ -11,7 +11,7 @@
     - Database - master
     - user name - sa
     - password 1qaz!QAZ
-7. Import Postman requests to the local desktop app (can be found in the phisical direcotry ~path~of~the~clonned~repo/Documentation/Finovation.postman_collection.json)
+7. Import Postman requests to the local desktop app (can be found in the phisical directory path-of-the-clonned-repo/Documentation/Finovation.postman_collection.json)
 8. Run the migrations in FinovationTrader.Data project 
     - Open Package Manager Console
 	- Set FinovationTrader.Data project as Default and Startup
